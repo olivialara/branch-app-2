@@ -116,8 +116,8 @@ def graph_histograms(df):
    
     #HISTOGRAMS (JUST TRUE AND LAPLACE)
     fig = go.Figure()
-    fig.add_trace(go.Histogram(x=df['counts'], histnorm = 'percent', marker_color = 'crimson', name = 'True Counts'))
-    fig.add_trace(go.Histogram(x=df['laplace_noise_added'], histnorm = 'percent', marker_color = '#6ed85f', name= 'Laplace Noise Added'))
+    fig.add_trace(go.Histogram(x=df['counts'], nbinsx= 50, histnorm = 'percent', marker_color = 'crimson', name = 'True Counts'))
+    fig.add_trace(go.Histogram(x=df['laplace_noise_added'], nbinsx= 50, histnorm = 'percent', marker_color = '#6ed85f', name= 'Laplace Noise Added'))
 
     # overlay both histograms and add titles
     fig.update_layout(barmode='overlay',
