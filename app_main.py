@@ -4,7 +4,8 @@ import pandas as pd
 from PIL import Image
 from app_functions import *
 
-st.title('Implementing Laplace Mechanism & Kolmogorov-Smirnov Test')
+st.title('Laplace Mechanism')
+st.subtitle('Testing Varying Data Sizes, Ranges, Distributions, and Epsilon Values')
 range_number = st.number_input('Select a size for the dataset:', min_value=0, max_value=1_000_000, value=10_000)
 #st.write('Current size:', range_number)
 
