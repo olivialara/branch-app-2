@@ -86,16 +86,16 @@ def add_noise_columns(df, epsilon):
     std_noise = df['l_difference'].std()
 
     st.dataframe(df)
-    return(kst_test(df))
-
-def kst_test(df):
-    p_val = kstest(df['counts'], df['laplace_noise_added'])[1]  
-    if p_val < 0.05:
-        caption = "the fit of the Laplace distribution is NOT good."
-    else:
-        caption = "the fit of the Laplace distribution IS good."
-    st.write(f'The P-value is {p_val}. Therefore, {caption}')
     return(graph_histograms(df))
+
+# def kst_test(df):
+#     p_val = kstest(df['counts'], df['laplace_noise_added'])[1]  
+#     if p_val < 0.05:
+#         caption = "the fit of the Laplace distribution is NOT good."
+#     else:
+#         caption = "the fit of the Laplace distribution IS good."
+#     st.write(f'The P-value is {p_val}. Therefore, {caption}')
+#     return(graph_histograms(df))
 
 def graph_histograms(df):
     # HISTOGRAMS
@@ -116,8 +116,8 @@ def graph_histograms(df):
    
     #HISTOGRAMS (JUST TRUE AND LAPLACE)
     fig = go.Figure()
-    fig.add_trace(go.Histogram(x=df['counts'], histnorm = '', marker_color = '#0000FF', name = 'True Counts'))
-    fig.add_trace(go.Histogram(x=df['laplace_noise_added'], histnorm = '', marker_color = '#6ed85f', name= 'Laplace Noise Added'))
+    fig.add_trace(go.Histogram(x=df['counts'], histnorm = 'percent', marker_color = '#0000FF', name = 'True Counts'))
+    fig.add_trace(go.Histogram(x=df['laplace_noise_added'], histnorm = 'percent', marker_color = '#6ed85f', name= 'Laplace Noise Added'))
 
     # overlay both histograms and add titles
     fig.update_layout(barmode='overlay',
